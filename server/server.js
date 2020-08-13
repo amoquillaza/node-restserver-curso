@@ -8,7 +8,8 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use(require('./routes/usuario'));
+// Configuración global de rutas
+app.use(require('./routes/index'));
 
 mongoose.connect(process.env.URLDB,
    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }, 
@@ -18,5 +19,5 @@ mongoose.connect(process.env.URLDB,
 });
 
 app.listen(process.env.PORT, () => {
-    console.log('Escuchando en el puerto: ', 3000);
+    console.log('Escuchando en el puerto: ', process.env.PORT);
 });
